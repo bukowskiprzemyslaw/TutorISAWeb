@@ -36,12 +36,12 @@ public class TutorService {
     }
 
     //Filling database with examples
-    /*
+/*
     @EventListener(ApplicationReadyEvent.class)
     public void fillDB() {
         saveTutor(new Tutor(1L,"Jan","Kowalski","kowalski@buziaczek.pl","700800900"));
         saveTutor(new Tutor(2L,"Bill","Gates","gates@windows.com","586666666"));
         saveTutor(new Tutor(3L,"Zenon","Martyniuk","whataboutit@ask.com","600111111"));
     }
-    */
+*/
 }

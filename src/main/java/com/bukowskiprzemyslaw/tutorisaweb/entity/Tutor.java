@@ -9,13 +9,15 @@ import javax.persistence.Id;
 public class Tutor {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Id
     private Long tutorId;
     private String firstName;
     private String lastName;
     private String email;
     private String phoneNumber;
+
+    public Tutor() {
+    }
 
     public Tutor (Long tutorId, String firstName, String lastName, String email, String phoneNumber) {
         this.tutorId = tutorId;
