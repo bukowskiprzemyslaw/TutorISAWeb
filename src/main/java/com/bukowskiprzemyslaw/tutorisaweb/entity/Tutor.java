@@ -3,9 +3,17 @@ package com.bukowskiprzemyslaw.tutorisaweb.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 
 @Entity
+@Table(name = "tbl_tutors")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Tutor {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,16 +24,6 @@ public class Tutor {
     private String email;
     private String phoneNumber;
 
-    public Tutor() {
-    }
-
-    public Tutor (Long tutorId, String firstName, String lastName, String email, String phoneNumber) {
-        this.tutorId = tutorId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-    }
 
     public Long getTutorId() {
         return tutorId;

@@ -8,6 +8,28 @@
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>E-Mail</th>
+        <th>Numer telefonu</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="tutor: ${tutors}">
+        <td th:text="${tutor.firstName}" />
+        <td th:text="${tutor.lastName}" />
+        <td th:text="${tutor.email}" />
+        <td th:text="${tutor.phoneNumber}" />
+    </tr>
+    </tbody>
+
+</table>
+</div>
+
+
 List of ISA Tutors
 </body>
 </html>
