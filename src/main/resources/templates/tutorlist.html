@@ -8,6 +8,11 @@
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 <body>
+<li class="nav-item me-2">
+    <a class="nav-link" th:href="@{/newtutor}"
+       th:classappend="${#httpServletRequest.getRequestURI() == '/newtutor' ? 'active' : ''}">Dodaj trenera
+    </a>
+</li>
 <table class="table table-bordered table-striped">
     <thead>
     <tr>
