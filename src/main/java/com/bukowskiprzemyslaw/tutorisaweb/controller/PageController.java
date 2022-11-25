@@ -29,12 +29,14 @@ public class PageController {
         return mav;
     }
 
-    @PostMapping("/newtutor")
-    public String addTutor(Tutor tutor, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "add-tutor";
-        }
+    @GetMapping("/newtutor")
+    public String newTutorForm (Model model) {
+        model.addAttribute("tutor", new Tutor());
+        return "add-tutor";
+    }
 
+    @PostMapping("/newtutor")
+    public String addTutor(Tutor tutor) {
         tutorRepository.save(tutor);
         return "redirect:/tutorlist";
     }
