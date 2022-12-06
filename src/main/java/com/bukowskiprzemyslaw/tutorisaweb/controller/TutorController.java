@@ -52,9 +52,9 @@ public class PageController {
         return mav;
     }
 
-    @GetMapping("/deletetutor")
-    public String deleteTutor(@RequestParam Long tutorId) {
-        tutorRepository.deleteById(tutorId);
+    @PostMapping("/deletetutor")
+    public String deleteTutor(@RequestParam Long tutor) {
+        tutorRepository.deleteById(tutor);
         return "redirect:/tutorlist";
     }
 
