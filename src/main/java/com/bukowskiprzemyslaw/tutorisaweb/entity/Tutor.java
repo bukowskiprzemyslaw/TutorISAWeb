@@ -27,8 +27,6 @@ public class Tutor {
     @Email(message = "Proszę podać adres e-mail w formacie xxx@xx.xx")
     private String email;
 
-    @Min(9)
-    @Max(11)
     @NotBlank(message = "Proszę podać telefon składający się z 9-11 cyfr")
     private String phoneNumber;
 
