@@ -1,61 +1,67 @@
 package com.bukowskiprzemyslaw.tutorisaweb.controller;
 
 import com.bukowskiprzemyslaw.tutorisaweb.entity.Tutor;
-import com.bukowskiprzemyslaw.tutorisaweb.repository.TutorRepository;
-import com.bukowskiprzemyslaw.tutorisaweb.service.TutorService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+
+import javax.validation.Valid;
 
 @Controller
 
-public class PageController {
-
-    @GetMapping("/index")
-    public String getIndex() {
-        return "";
-    }
-
-    @Autowired
-    private TutorRepository tutorRepository;
-
-    @GetMapping("/tutorlist")
-    public ModelAndView getTutors() {
-        ModelAndView mav = new ModelAndView("tutorlist");
-        mav.addObject("tutors", tutorRepository.findAll());
-        return mav;
-    }
+public class TutorController {
 
     @GetMapping("/newtutor")
-    public String newTutorForm(Model model) {
-        model.addAttribute("tutor", new Tutor());
+    public String showAddTutorForm(Tutor tutor) {
         return "add-tutor";
     }
 
-    @PostMapping("/newtutor")
-    public String addTutor(Tutor tutor) {
+    @PostMapping("/adduser")
+    public String addTutor(@Valid Tutor tutor, BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            return "add-tutor";
+        }
+
         tutorRepository.save(tutor);
-        return "redirect:/tutorlist";
+        return "redirect:/index";
     }
 
-    @GetMapping("/updatetutor")
-    public ModelAndView updateTutor(@RequestParam Long tutorId) {
-        ModelAndView mav = new ModelAndView("add-tutor");
-        Tutor tutor = tutorRepository.findById(tutorId).get();
-        mav.addObject("tutor", tutor);
-        return mav;
+    @GetMapping("/index")
+    public String showTutorList(Model model) {
+        model.addAttribute("tutors", tutorRepository.findAll());
+        return "index";
     }
 
-    @PostMapping("/deletetutor")
-    public String deleteTutor(@RequestParam Long tutor) {
-        tutorRepository.deleteById(tutor);
-        return "redirect:/tutorlist";
+    @GetMapping("/edit/{id}")
+    public String showUpdateTutorForm(@PathVariable("id") long id, Model model) {
+        Tutor tutor = tutorRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Nieprawidłowy numer Id trenera:" + id));
+
+        model.addAttribute("tutor", tutor);
+        return "update-tutor";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateTutor(@PathVariable("id") long id, @Valid Tutor tutor,
+                             BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            tutor.setId(id);
+            return "update-tutor";
+        }
+
+        tutorRepository.save(tutor);
+        return "redirect:/index";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteTutor(@PathVariable("id") long id, Model model) {
+        Tutor tutor = tutorRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Nieprawidłowy numer Id trenera:" + id));
+        tutorRepository.delete(tutor);
+        return "redirect:/index";
     }
 
 }
