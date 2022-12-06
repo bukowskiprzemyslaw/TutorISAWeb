@@ -23,7 +23,7 @@ public class TutorController {
         return "add-tutor";
     }
 
-    @PostMapping("/adduser")
+    @PostMapping("/addtutor")
     public String addTutor(@Valid Tutor tutor, BindingResult result, Model model) {
         if (result.hasErrors()) {
             return "add-tutor";
