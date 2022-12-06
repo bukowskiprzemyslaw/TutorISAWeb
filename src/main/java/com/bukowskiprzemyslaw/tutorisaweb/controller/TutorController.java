@@ -1,6 +1,7 @@
 package com.bukowskiprzemyslaw.tutorisaweb.controller;
 
 import com.bukowskiprzemyslaw.tutorisaweb.entity.Tutor;
+import com.bukowskiprzemyslaw.tutorisaweb.repository.TutorRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,10 +10,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.Properties;
 
 @Controller
 
 public class TutorController {
+
+    private TutorRepository tutorRepository;
 
     @GetMapping("/newtutor")
     public String showAddTutorForm(Tutor tutor) {
