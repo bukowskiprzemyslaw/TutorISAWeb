@@ -27,6 +27,11 @@
         <td th:text="${tutor.lastName}" />
         <td th:text="${tutor.email}" />
         <td th:text="${tutor.phoneNumber}" />
+        <td>
+            <a th:href="@{/edit/{id}(id=${tutor.id})}" class="btn btn-info">Update</a>
+
+            <a th:href="@{/deleteTutor(Id=${tutor.id})}" class="btn btn-danger ml-2">Delete</a>
+        </td>
     </tr>
     </tbody>
 </table>
