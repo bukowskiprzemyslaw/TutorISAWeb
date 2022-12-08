@@ -1,5 +1,7 @@
 package com.bukowskiprzemyslaw.tutorisaweb.entity;
 
+import com.bukowskiprzemyslaw.tutorisaweb.repository.TutorRepository;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,11 +13,11 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-
+@Table
 public class Tutor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
 
     @NotBlank(message = "Proszę podać imię trenera")
@@ -29,6 +31,9 @@ public class Tutor {
 
     @NotBlank(message = "Proszę podać telefon składający się z 9-11 cyfr")
     private String phoneNumber;
+
+    public Tutor(){
+    };
 
     public Tutor(Long id, String firstName, String lastName, String email, String phoneNumber) {
         this.id = id;
@@ -78,15 +83,5 @@ public class Tutor {
         this.phoneNumber = phoneNumber;
     }
 
-    @Override
-    public String toString() {
-        return "Tutor{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                '}';
-    }
 }
 

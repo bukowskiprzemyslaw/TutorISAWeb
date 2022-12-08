@@ -2,6 +2,8 @@ package com.bukowskiprzemyslaw.tutorisaweb.controller;
 
 import com.bukowskiprzemyslaw.tutorisaweb.entity.Tutor;
 import com.bukowskiprzemyslaw.tutorisaweb.repository.TutorRepository;
+import com.bukowskiprzemyslaw.tutorisaweb.service.TutorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,7 +18,8 @@ import java.util.Properties;
 
 public class TutorController {
 
-    private TutorRepository tutorRepository;
+    @Autowired
+    private TutorService tutorService;
 
     @GetMapping("/newtutor")
     public String showAddTutorForm(Tutor tutor) {
@@ -29,20 +32,19 @@ public class TutorController {
             return "add-tutor";
         }
 
-        tutorRepository.save(tutor);
+        tutorService.saveTutor(tutor);
         return "redirect:/index";
     }
 
     @GetMapping("/index")
     public String showTutorList(Model model) {
-        model.addAttribute("tutors", tutorRepository.findAll());
+        model.addAttribute("tutors", tutorService.fetchTutorList());
         return "index";
     }
 
     @GetMapping("/edit/{id}")
     public String showUpdateTutorForm(@PathVariable("id") long id, Model model) {
-        Tutor tutor = tutorRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Nieprawidłowy numer Id trenera:" + id));
+        Tutor tutor = tutorService.fetchTutorById(id);
 
         model.addAttribute("tutor", tutor);
         return "update-tutor";
@@ -56,15 +58,14 @@ public class TutorController {
             return "update-tutor";
         }
 
-        tutorRepository.save(tutor);
+        tutorService.saveTutor(tutor);
         return "redirect:/index";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteTutor(@PathVariable("id") long id, Model model) {
-        Tutor tutor = tutorRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Nieprawidłowy numer Id trenera:" + id));
-        tutorRepository.delete(tutor);
+        Tutor tutor = tutorService.fetchTutorById(id);
+        tutorService.deleteTutorById(id);
         return "redirect:/index";
     }
 
