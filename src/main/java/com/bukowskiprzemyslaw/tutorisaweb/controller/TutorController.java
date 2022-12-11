@@ -33,10 +33,10 @@ public class TutorController {
         }
 
         tutorService.saveTutor(tutor);
-        return "redirect:/index";
+        return "redirect:/";
     }
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public String showTutorList(Model model) {
         model.addAttribute("tutors", tutorService.fetchTutorList());
         return "index";
@@ -59,14 +59,14 @@ public class TutorController {
         }
 
         tutorService.saveTutor(tutor);
-        return "redirect:/index";
+        return "redirect:/";
     }
 
     @GetMapping("/delete/{id}")
     public String deleteTutor(@PathVariable("id") long id, Model model) {
         Tutor tutor = tutorService.fetchTutorById(id);
         tutorService.deleteTutorById(id);
-        return "redirect:/index";
+        return "redirect:/";
     }
 
 }
