@@ -11,6 +11,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 @Entity
 @Table
@@ -33,16 +34,7 @@ public class Tutor {
     private String phoneNumber;
 
     public Tutor(){
-    };
-
-    public Tutor(Long id, String firstName, String lastName, String email, String phoneNumber) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
     }
-
     public Long getId() {
         return id;
     }

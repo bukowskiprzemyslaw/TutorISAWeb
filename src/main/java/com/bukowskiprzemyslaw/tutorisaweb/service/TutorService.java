@@ -9,7 +9,7 @@ public interface TutorService {
 
     void saveTutor(Tutor tutor);
 
-    List<Tutor> fetchTutorList();
+    List< Tutor > fetchTutorList();
 
     Tutor fetchTutorById(Long id);
 

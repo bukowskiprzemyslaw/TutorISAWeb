@@ -17,7 +17,7 @@ public class TutorServiceImplementation implements TutorService {
 
     @Override
     public List < Tutor > fetchTutorList() {
-        return (List<Tutor>) tutorRepository.findAll();
+        return tutorRepository.findAll();
     }
 
     @Override
