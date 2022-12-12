@@ -1,4 +1,4 @@
-package com.bukowskiprzemyslaw.tutorisaweb.web.dto;
+package com.bukowskiprzemyslaw.tutorisaweb.dto;
 
 public class UserRegistrationDto {
 
