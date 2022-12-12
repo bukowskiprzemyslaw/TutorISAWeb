@@ -1,4 +1,9 @@
 package com.bukowskiprzemyslaw.tutorisaweb.service;
 
-public class UserService {
+import com.bukowskiprzemyslaw.tutorisaweb.entity.User;
+import com.bukowskiprzemyslaw.tutorisaweb.web.dto.UserRegistrationDto;
+
+public interface UserService {
+
+    User save(UserRegistrationDto registrationDto);
 }
