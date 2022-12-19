@@ -6,7 +6,11 @@ public class UserRegistrationDto {
 
     private String password;
 
+    public UserRegistrationDto() {
+    }
+
     public UserRegistrationDto(String login, String password) {
+        super();
         this.login = login;
         this.password = password;
     }
