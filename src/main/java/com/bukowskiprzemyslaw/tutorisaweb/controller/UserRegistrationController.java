@@ -3,6 +3,7 @@ package com.bukowskiprzemyslaw.tutorisaweb.controller;
 import com.bukowskiprzemyslaw.tutorisaweb.dto.UserRegistrationDto;
 import com.bukowskiprzemyslaw.tutorisaweb.service.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -15,6 +16,10 @@ public class UserRegistrationController {
     public UserRegistrationController(UserService userService) {
         super();
         this.userService = userService;
+    }
+    @GetMapping
+    public String showRegistrationForm() {
+        return "registration";
     }
 
     public String registerUserAccount(@ModelAttribute("user") UserRegistrationDto registrationDto) {
