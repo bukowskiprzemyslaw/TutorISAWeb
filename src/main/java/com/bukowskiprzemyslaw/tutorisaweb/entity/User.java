@@ -1,6 +1,7 @@
 package com.bukowskiprzemyslaw.tutorisaweb.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import java.util.Collection;
 
 @Entity
@@ -11,6 +12,7 @@ public class User  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Email(message = "Loginem jest adres e-mail w formacie xxx@xx.xx")
     private String login;
 
     private String password;
