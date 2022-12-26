@@ -21,6 +21,11 @@ public class TutorController {
     @Autowired
     private TutorService tutorService;
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
     @GetMapping("/newtutor")
     public String showAddTutorForm(Tutor tutor) {
         return "add-tutor";

@@ -27,6 +27,10 @@ public class User  {
 
     private Collection<Role> roles;
 
+    public User() {
+
+    }
+
     public User(String login, String password, Collection<Role> roles) {
         this.login = login;
         this.password = password;
