@@ -5,7 +5,7 @@ import javax.validation.constraints.Email;
 import java.util.Collection;
 
 @Entity
-@Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "login"))
+@Table(name = "user", uniqueConstraints = @UniqueConstraint(columnNames = "username"))
 public class User  {
 
     @Id
@@ -13,7 +13,7 @@ public class User  {
     private Long id;
 
     @Email(message = "Loginem jest adres e-mail w formacie xxx@xx.xx")
-    private String login;
+    private String username;
 
     private String password;
 
@@ -31,8 +31,8 @@ public class User  {
 
     }
 
-    public User(String login, String password, Collection<Role> roles) {
-        this.login = login;
+    public User(String username, String password, Collection<Role> roles) {
+        this.username = username;
         this.password = password;
         this.roles = roles;
     }
@@ -45,12 +45,12 @@ public class User  {
         this.id = id;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

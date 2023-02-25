@@ -2,25 +2,25 @@ package com.bukowskiprzemyslaw.tutorisaweb.dto;
 
 public class UserRegistrationDto {
 
-    private String login;
+    private String username;
 
     private String password;
 
     public UserRegistrationDto() {
     }
 
-    public UserRegistrationDto(String login, String password) {
+    public UserRegistrationDto(String username, String password) {
         super();
-        this.login = login;
+        this.username = username;
         this.password = password;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

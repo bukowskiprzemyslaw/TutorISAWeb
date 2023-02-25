@@ -26,7 +26,7 @@ public class UserServiceImplementation implements UserService {
 
     @Override
     public User save(UserRegistrationDto registrationDto) {
-        User user = new User(registrationDto.getLogin(), registrationDto.getPassword(), Arrays.asList(new Role("ROLE_USER")));
+        User user = new User(registrationDto.getUsername(), registrationDto.getPassword(), Arrays.asList(new Role("ROLE_USER")));
 
         return userRepository.save(user);
     }
@@ -34,11 +34,11 @@ public class UserServiceImplementation implements UserService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        User user = userRepository.findByLogin(username);
+        User user = userRepository.findByUsername(username);
         if(user == null) {
             throw new UsernameNotFoundException("Błędny login lub hasło.");
         }
-        return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), mapRolesToAuthorities(user.getRoles()));
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roles){
