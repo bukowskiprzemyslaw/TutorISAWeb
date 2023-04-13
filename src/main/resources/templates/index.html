@@ -40,6 +40,7 @@
 <table class="table table-bordered table-striped">
     <thead>
     <tr>
+        <th>ID</th>
         <th>Imię</th>
         <th>Nazwisko</th>
         <th>E-Mail</th>
@@ -48,6 +49,7 @@
     </thead>
     <tbody>
     <tr th:each="tutor: ${tutors}">
+        <td th:text="${tutor.id}" />
         <td th:text="${tutor.firstName}" />
         <td th:text="${tutor.lastName}" />
         <td th:text="${tutor.email}" />

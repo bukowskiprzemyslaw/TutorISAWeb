@@ -1,0 +1,1 @@
+<Connector port="8080" proxyPort="80" remoteIpHeader="X-Forwarded-For" protocolHeader="X-Forwarded-Proto"/>
