@@ -11,19 +11,37 @@
 <body>
 
 <form action="#" th:action="@{/addtutor}" th:object="${tutor}" method="post">
-    <label for="firstName">Imię</label>
-    <input type="text" th:field="*{firstName}" id="firstName" placeholder="Imię">
-    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
-    <label for="lastName">Nazwisko</label>
-    <input type="text" th:field="*{lastName}" id="lastName" placeholder="Nazwisko">
-    <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
-    <label for="email">Adres e-mail</label>
-    <input type="text" th:field="*{email}" id="email" placeholder="Adres e-mail">
-    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
-    <label for="phoneNumber">Numer telefonu</label>
-    <input type="text" th:field="*{phoneNumber}" id="phoneNumber" placeholder="Numer telefonu">
-    <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
-    <input type="submit" value="Dodaj trenera">
+    <div class="col-md-6 col-lg-5">
+
+        <div class="mb-3">
+            <label for="firstName" class="form-label">Imię</label>
+            <input type="text" th:field="*{firstName}" id="firstName" placeholder="Imię">
+            <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Nazwisko</label>
+            <input type="text" th:field="*{lastName}" id="lastName" placeholder="Nazwisko">
+            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Adres e-mail</label>
+            <input type="text" th:field="*{email}" id="email" placeholder="Adres e-mail">
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+        </div>
+
+        <div>
+            <label for="phoneNumber" class="form-label">Numer telefonu</label>
+            <input type="text" th:field="*{phoneNumber}" id="phoneNumber" placeholder="Numer telefonu">
+            <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+        </div>
+
+        <div>
+            <input type="submit" value="Dodaj trenera">
+        </div>
+
+    </div>
 </form>
 
 </body>
